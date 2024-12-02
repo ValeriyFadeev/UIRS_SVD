@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def tensor_train(A, r1, r2):
     N1, N2, N3 = A.shape
     A1 = A.reshape(N1, N2 * N3)
-    U, s, V = np.linalg.svd(A1)
+    U, s, V = np.linalg.svd(A1,full_matrices=False)
     G1 = U[:, :r1]  # N1 x r1
     V1 = np.diag(s[:r1]) @ V[:r1, :]  # r1 x (N2 * N3)
     V1 = V1.reshape(r1 * N2, N3)
